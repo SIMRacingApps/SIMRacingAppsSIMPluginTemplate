@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="SIMRacingAppsSIMPluginTemplate">
+      <tstamp>
+          <format property="build.time" pattern="yyyy.MM.dd.HH.mm.ss" />
+      </tstamp>
+      <tstamp>
+          <format property="build.date" pattern="yyyy.MM.dd" />
+      </tstamp>
+      <tstamp>
+          <format property="build.year" pattern="yyyy" />
+      </tstamp>
+    <property name="version.properties" value="src/com/SIMRacingApps/SIMPlugins/Template/version.properties" />
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../../PortableApps/EclipsePortable/App/Eclipse/"/>
+    <property name="SIMRacingAppsServer.location" value="../SIMRacingAppsServer"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.8"/>
+    <property name="source" value="1.8"/>
+    <path id="Web App Libraries.libraryclasspath">
+        <pathelement location="../../../../SIMRacingAppsServer/WebContent/WEB-INF/lib/snakeyaml-1.13.jar"/>
+        <pathelement location="../../../../SIMRacingAppsServer/WebContent/WEB-INF/lib/genson-1.3.jar"/>
+        <pathelement location="../../../../SIMRacingAppsServer/WebContent/WEB-INF/lib/jna-4.2.1.jar"/>
+        <pathelement location="../../../../SIMRacingAppsServer/WebContent/WEB-INF/lib/jna-platform-4.2.1.jar"/>
+    </path>
+    <path id="EAR Libraries.libraryclasspath"/>
+    <path id="SIMRacingAppsServer.classpath">
+        <pathelement location="${SIMRacingAppsServer.location}/WebContent/WEB-INF/classes"/>
+        <path refid="Web App Libraries.libraryclasspath"/>
+        <path refid="EAR Libraries.libraryclasspath"/>
+        <pathelement location="${SIMRacingAppsServer.location}/../../../../Java/jetty-distribution-9.3.2.v20150730/lib/jetty-server-9.3.2.v20150730.jar"/>
+        <pathelement location="${SIMRacingAppsServer.location}/../../../../Java/jetty-distribution-9.3.2.v20150730/lib/jetty-util-9.3.2.v20150730.jar"/>
+        <pathelement location="${SIMRacingAppsServer.location}/../../../../Java/jetty-distribution-9.3.2.v20150730/lib/jetty-http-9.3.2.v20150730.jar"/>
+        <pathelement location="${SIMRacingAppsServer.location}/../../../../Java/jetty-distribution-9.3.2.v20150730/lib/jetty-io-9.3.2.v20150730.jar"/>
+        <pathelement location="${SIMRacingAppsServer.location}/../../../../Java/jetty-distribution-9.3.2.v20150730/lib/servlet-api-3.1.jar"/>
+        <pathelement location="${SIMRacingAppsServer.location}/../../../../Java/jetty-distribution-9.3.2.v20150730/lib/jetty-security-9.3.2.v20150730.jar"/>
+        <pathelement location="${SIMRacingAppsServer.location}/../../../../Java/jetty-distribution-9.3.2.v20150730/lib/jetty-servlet-9.3.2.v20150730.jar"/>
+        <pathelement location="${SIMRacingAppsServer.location}/../../../../Java/jetty-distribution-9.3.2.v20150730/lib/websocket/javax.websocket-api-1.0.jar"/>
+        <pathelement location="${SIMRacingAppsServer.location}/../../../../Java/jetty-distribution-9.3.2.v20150730/lib/websocket/javax-websocket-server-impl-9.3.2.v20150730.jar"/>
+        <pathelement location="${SIMRacingAppsServer.location}/../../../../Java/jetty-distribution-9.3.2.v20150730/lib/websocket/javax-websocket-client-impl-9.3.2.v20150730.jar"/>
+        <pathelement location="${SIMRacingAppsServer.location}/../../../../Java/jetty-distribution-9.3.2.v20150730/lib/websocket/websocket-server-9.3.2.v20150730.jar"/>
+        <pathelement location="${SIMRacingAppsServer.location}/../../../../Java/jetty-distribution-9.3.2.v20150730/lib/websocket/websocket-api-9.3.2.v20150730.jar"/>
+        <pathelement location="${SIMRacingAppsServer.location}/../../../../Java/jetty-distribution-9.3.2.v20150730/lib/websocket/websocket-servlet-9.3.2.v20150730.jar"/>
+        <pathelement location="${SIMRacingAppsServer.location}/../../../../Java/jetty-distribution-9.3.2.v20150730/lib/websocket/websocket-common-9.3.2.v20150730.jar"/>
+        <pathelement location="${SIMRacingAppsServer.location}/../../../../Java/jetty-distribution-9.3.2.v20150730/lib/websocket/websocket-client-9.3.2.v20150730.jar"/>
+    </path>
+    <path id="SIMRacingAppsSIMPluginTemplate.classpath">
+        <pathelement location="classes"/>
+        <path refid="SIMRacingAppsServer.classpath"/>
+    </path>
+    <target name="init">
+        <mkdir dir="classes"/>
+        <copy includeemptydirs="false" todir="classes">
+            <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="classes"/>
+    </target>
+    <target depends="clean" name="cleanall">
+        <ant antfile="build.xml" dir="${SIMRacingAppsServer.location}" inheritAll="false" target="clean"/>
+    </target>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects">
+        <ant antfile="build.xml" dir="${SIMRacingAppsServer.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+    </target>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="classes" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="SIMRacingAppsSIMPluginTemplate.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+      <target name="version">
+          <sequential>
+              <propertyfile file="${version.properties}">
+                  <entry key="major" type="int" value="1" />
+                  <entry key="minor" type="int" value="0" />
+                  <entry key="build" type="string" value="BETA-${build.date}" />
+                  <entry key="built-by" type="string" value="Jeffrey Gilliam" />
+                  <entry key="copyright" type="string" value="Copyright (C) 2015 - ${build.year} Jeffrey Gilliam" />
+                  <entry key="license" type="string" value="Apache License, Version 2.0, January 2004" />
+              </propertyfile>
+              <replaceregexp match="^#.*$" replace="#Sat, 01 Jan 2000 00:00:00 -0000" byline="true">
+                  <fileset dir="." includes="${version.properties}" />
+              </replaceregexp>
+              <property file="${version.properties}" prefix="version" />
+              <property name="version" value="${version.major}.${version.minor}_Build_${version.build}" />
+              <echo message="${version.properties} Updated to: ${version}" />
+          </sequential>
+      </target>
+    <target name="SIMRacingAppsPlugin-Template.sra" depends="version,build">
+        <property file="${version.properties}" prefix="version" />
+        <property name="version" value="${version.major}.${version.minor}_Build_${version.build}" />
+        <zip destfile="${java.io.tmpdir}/SIMRacingAppsPlugin-Template_${version}.sra" basedir="classes" />
+    </target>
+</project>
