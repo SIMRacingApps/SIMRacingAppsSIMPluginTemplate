@@ -8,7 +8,7 @@ import com.SIMRacingApps.SIMPlugin;
 
 /**
  * @author Jeffrey Gilliam
- * @copyright Copyright (C) 2019 - 2019 Jeffrey Gilliam
+ * @copyright Copyright (C) 2015 - 2022 Jeffrey Gilliam
  * @since 1.9
  * @license Apache License 2.0
  */
